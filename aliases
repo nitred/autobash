@@ -1,0 +1,23 @@
+#!/bin/bash
+# general: bash
+alias srcbash='source ~/.bashrc'
+alias atom-bash='atom ~/.bashrc ~/.bash_aliases'
+alias atom-bashaliases='atom ~/.bash_aliases'
+alias atom-bashrc='atom ~/.bashrc'
+alias anaconda2='bash --rcfile ~/.conda_bashrc2'
+alias anaconda3='bash --rcfile ~/.conda_bashrc3'
+
+function open-nautilus() {
+    PWD=$(pwd)
+    echo "Nautilus into $PWD"
+    nautilus $PWD
+}
+alias nauty='open-nautilus'
+
+alias doosh='du -sh'
+alias doosh-list='du -h --max-depth=1'
+alias doosh-list-sort='du -h --max-depth=1| sort -hrk1'
+
+PROJECT_HOME=$HOME/projects/
+
+# Additional aliases other than `projects`

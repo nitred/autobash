@@ -1,0 +1,204 @@
+#!/bin/bash
+echo "---------------"
+echo "BASHTK PROJECTS"
+
+# DOCUMENTATION ???
+PROJECTS_HOME=$1
+echo "PROJECTS_HOME: $PROJECTS_HOME"
+
+# DOCUMENTATION???
+PROJECTS=(
+"autobash              ;aliases;no_anaconda"
+)
+
+#========================
+# DOCUMENTATION???
+# project_extra_aliases
+# project_extra_condaenv
+#========================
+# autobash
+autobash_extra_aliases="alias cp-autobash='bash $PROJECTS_HOME/autobash/cp_autobash'"
+
+
+###############################################################
+# AUTOMATING ALIASES AND CONDA_BASHRC CREATION FOR ALL PROJECTS
+###############################################################
+for i in "${PROJECTS[@]}"
+do
+    echo "----------------------"
+    arr=(${i//;/ })
+        project=${arr[0]}
+        aliases=${arr[1]}
+        condaenv=${arr[2]}
+
+
+    ##############################
+    # CREATING ALIASES FOR PROJECT
+    ##############################
+    if [ "$aliases" == "aliases" ]
+    then
+        echo "PROJECT $project: Creating aliases"
+
+
+#----------------------------------------------
+# APPENDING STANDARD ALIASES TO ~/.bash_aliases
+#----------------------------------------------
+echo "
+# project: $project
+alias cd-$project='cd $PROJECTS_HOME/$project'
+alias atom-$project='atom -n $PROJECTS_HOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
+
+
+#-------------------------------------------
+# APPENDING EXTRA ALIASES TO ~/.bash_aliases
+#-------------------------------------------
+extra_aliases_variable="${project}_extra_aliases"
+if [ -n "${!extra_aliases_variable}" ]
+then
+  echo "PROJECT $project: Creating extra aliases"
+  echo "${!extra_aliases_variable}" >> ~/.bash_aliases
+else
+  echo "PROJECT $project: Not creating extra aliases"
+fi
+
+
+    ######################################
+    # NOT CREATING ANY ALIASES FOR PROJECT
+    #####################################
+    else
+        echo "PROJECT $project: Not creating aliases"
+    fi
+
+
+    ###########################################
+    # CREATING ANACONDA2 ENVIRONMENT FOR PROJECT
+    ###########################################
+    if [ "$condaenv" == "anaconda2" ]
+    then
+        echo "PROJECT $project: Creating conda_bashrc2 file"
+
+        #----------------------------------------
+        # CREATING CONDA_BASHRC2 FILE FOR PROJECT
+        #----------------------------------------
+        conda_bashrc_filename="$HOME/.autobash/conda_bashrc2_$project"
+        echo "PROJECT $project: $conda_bashrc_filename"
+        mkdir -p "$(dirname "$conda_bashrc_filename")"
+
+
+#------------------------------------------------------
+# APPENDING CONDA BASHRC2 FILE WITH ENVIRONMENT DETAILS
+#------------------------------------------------------
+echo "#!/bin/bash
+echo \"CONDA-BASHRC 2 $project\"
+
+if [ -f ~/.bashrc ]
+then
+    source ~/.bashrc
+fi
+
+function condapy() {
+     local RED=\"\[\033[0;31m\]\"
+     PATH=\$HOME/anaconda2/bin:\$PATH
+     export PS1=\"\$RED[CONDA2] \$PS1\"
+ }
+
+condapy
+
+alias ipy='jupyter qtconsole'
+alias startnb='jupyter notebook'
+alias nb2pdf='jupyter nbconvert --to latex --post PDF'
+condaforge() { conda install -c conda-forge \"\$@\" ;}
+
+source activate $project" > $conda_bashrc_filename
+
+
+#--------------------------------------------------
+# APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
+#--------------------------------------------------
+extra_condaenv_variable="${project}_extra_condaenv"
+if [ -n "${!extra_condaenv_variable}" ]
+then
+  echo "PROJECT $project: Creating extra condev"
+  echo "${!extra_condaenv_variable}" >> $conda_bashrc_filename
+else
+  echo "PROJECT $project: Not creating extra condev"
+fi
+
+
+#--------------------------------------------------------
+# APPENDING CONDAENV ALIAS TO ~/.bash_aliases FOR PROJECT
+#--------------------------------------------------------
+echo "alias anaconda2-${project}='bash --rcfile ${conda_bashrc_filename}'" >> ~/.bash_aliases
+
+
+
+    ###########################################
+    # CREATING ANACONDA3 ENVIRONMENT FOR PROJECT
+    ###########################################
+    elif [ "$condaenv" == "anaconda3" ]
+    then
+        echo "PROJECT $project: Creating conda_bashrc3 file"
+
+        #----------------------------------------
+        # CREATING CONDA_BASHRC3 FILE FOR PROJECT
+        #----------------------------------------
+        conda_bashrc_filename="$HOME/.autobash/conda_bashrc3_$project"
+        echo "PROJECT $project: $conda_bashrc_filename"
+        mkdir -p "$(dirname "$conda_bashrc_filename")"
+
+
+#------------------------------------------------------
+# APPENDING CONDA BASHRC2 FILE WITH ENVIRONMENT DETAILS
+#------------------------------------------------------
+echo "#!/bin/bash
+echo \"CONDA-BASHRC 3 $project\"
+
+if [ -f ~/.bashrc ]
+then
+    source ~/.bashrc
+fi
+
+function condapy() {
+     local RED=\"\[\033[0;31m\]\"
+     PATH=\$HOME/anaconda3/bin:\$PATH
+     export PS1=\"\$RED[CONDA3] \$PS1\"
+ }
+
+condapy
+
+alias ipy='jupyter qtconsole'
+alias startnb='jupyter notebook'
+alias nb2pdf='jupyter nbconvert --to latex --post PDF'
+condaforge() { conda install -c conda-forge \"\$@\" ;}
+
+source activate $project" > $conda_bashrc_filename
+
+
+#--------------------------------------------------
+# APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
+#--------------------------------------------------
+extra_condaenv_variable="${project}_extra_condaenv"
+if [ -n "${!extra_condaenv_variable}" ]
+then
+  echo "PROJECT $project: Creating extra condev"
+  echo "${!extra_condaenv_variable}" >> $conda_bashrc_filename
+else
+  echo "PROJECT $project: Not creating extra condev"
+fi
+
+
+#--------------------------------------------------------
+# APPENDING CONDAENV ALIAS TO ~/.bash_aliases FOR PROJECT
+#--------------------------------------------------------
+echo "alias anaconda3-${project}='bash --rcfile ${conda_bashrc_filename}'" >> ~/.bash_aliases
+
+
+
+    ###################################################
+    # NOT CREATING ANY ANACONDA ENVIRONMENT FOR PROJECT
+    ###################################################
+    else
+        echo "PROJECT $project: Not creating project conda_bashrc file."
+    fi
+
+done
