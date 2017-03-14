@@ -1,0 +1,23 @@
+#!/bin/bash
+PROJECTS_HOME=$HOME/projects
+echo "PROJECTS_HOME: $PROJECTS_HOME"
+
+# Copy files to HOME_DIR
+cp_autobash() {
+    /bin/cp /etc/skel/.bashrc ~/
+    cat $PROJECTS_HOME/autobash/bashrc_append >> ~/.bashrc
+    echo "copied bashrc"
+    cp $PROJECTS_HOME/autobash/aliases ~/.bash_aliases
+    echo "copied bash_aliases"
+    cp $PROJECTS_HOME/autobash/conda_bashrc2 ~/.conda_bashrc2
+    echo "copied conda_bashrc2"
+    cp $PROJECTS_HOME/autobash/conda_bashrc3 ~/.conda_bashrc3
+    echo "copied conda_bashrc3"
+}
+cp_autobash
+
+# SOURCE PROJECTS FILE TO APPEND ~/.bash_aliases and create ~/.bashtk
+source $PROJECTS_HOME/autobash/projects $PROJECTS_HOME
+
+# SOURCE BASHRC
+source ~/.bashrc
