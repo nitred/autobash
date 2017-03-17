@@ -2,11 +2,16 @@
 echo "---------------"
 echo "BASHTK PROJECTS"
 
-# DOCUMENTATION ???
+# The PROJECTS_HOME variable is taken as the first argument when called by the cp_autobash
 PROJECTS_HOME=$1
 echo "PROJECTS_HOME: $PROJECTS_HOME"
 
-# DOCUMENTATION???
+####################################
+########### USER CONFIG ############
+##################################################################################
+# User must manually enter project names and `alias` and `anaconda` configuration.
+# SYNTAX: "<project_name>     ;<alias_config>;<anaconda_config>"
+##################################################################################
 PROJECTS=(
 "autobash              ;aliases;no_anaconda"
 )
