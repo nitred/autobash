@@ -20,6 +20,8 @@ PROJECTS=(
 "mocker                ;aliases;anaconda2"
 "tfexp                 ;aliases;anaconda3"
 "pyspark               ;aliases;anaconda3"
+"quora                 ;aliases;anaconda2"
+"beast                 ;aliases;no_anaconda"
 )
 
 #========================
