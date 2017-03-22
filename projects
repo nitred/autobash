@@ -14,6 +14,12 @@ echo "PROJECTS_HOME: $PROJECTS_HOME"
 ##################################################################################
 PROJECTS=(
 "autobash              ;aliases;no_anaconda"
+"pytk                  ;aliases;no_anaconda"
+"aqualand              ;aliases;anaconda2"
+"shazam                ;aliases;anaconda2"
+"mocker                ;aliases;anaconda2"
+"tfexp                 ;aliases;anaconda3"
+"pyspark               ;aliases;anaconda3"
 )
 
 #========================
@@ -24,6 +30,13 @@ PROJECTS=(
 # autobash
 autobash_extra_aliases="alias cp-autobash='bash $PROJECTS_HOME/autobash/cp_autobash'"
 
+# pyspark
+pyspark_extra_condaenv="
+export SPARK_HOME=$HOME/spark
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+"
 
 ###############################################################
 # AUTOMATING ALIASES AND CONDA_BASHRC CREATION FOR ALL PROJECTS

@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECTS_HOME=$HOME/projects
+PROJECTS_HOME=$HOME/nitred/projects
 echo "PROJECTS_HOME: $PROJECTS_HOME"
 
 # Copy files to HOME_DIR
