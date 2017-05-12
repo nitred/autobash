@@ -52,6 +52,7 @@ Feel free to change the default section of the `autobash/bashrc_append` provided
 ### Step 5: Add custom aliases to `autobash/aliases`
 The `~/.bash_aliases` file is recreated by Autobash by merging `autobash/aliases` with an auto generated list of project aliases.Therefore you must add your custom aliases to `autobash/aliases`.
 
+
 ### Step 6: Add project names to `autobash/projects`
 Add the name of your project to the `PROJECTS` variable. The name that you add here must be same as the name of the directory of the project.
 
@@ -68,7 +69,8 @@ PROJECTS=(
 * TODO: Project aliases
 * TODO: Project conda aliases
 
-### Step 6: Run the script
+
+### Step 7: Run the script
 Run the script by running the following:
 ```
 cd autobash
