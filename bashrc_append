@@ -1,3 +1,8 @@
+# Source bash aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # For GIT Status
 if [ ! -f ~/.bash_git ]
 then
