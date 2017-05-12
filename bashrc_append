@@ -1,3 +1,7 @@
+################ AUTOBASH - START ###################
+# The following lines have been added by Autobash.
+#####################################################
+
 # Source bash aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -51,5 +55,5 @@ git_dirty() {
 
  prompt
 
- # For CUDA
- export LD_LIBRARY_PATH=/usr/local/lib
+
+################ AUTOBASH - END ###################
