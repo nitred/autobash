@@ -30,7 +30,7 @@ PROJECTS=(
 # project_extra_condaenv
 #========================
 # autobash
-autobash_extra_aliases="alias cp-autobash='bash $PROJECTS_HOME/autobash/cp_autobash'"
+autobash_extra_aliases="alias cp-autobash='source $PROJECTS_HOME/autobash/cp_autobash'"
 
 # pyspark
 pyspark_extra_condaenv="
