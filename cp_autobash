@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECTS_HOME=$HOME/nitred/projects
+PROJECTS_HOME="$( dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" )"
 echo "PROJECTS_HOME: $PROJECTS_HOME"
 
 # Copy files to HOME_DIR
