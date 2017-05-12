@@ -1,4 +1,4 @@
-################ AUTOBASH - START ###################
+##################### AUTOBASH ######################
 # The following lines have been added by Autobash.
 #####################################################
 
@@ -55,4 +55,6 @@ function prompt {
 
 prompt
 
-################ AUTOBASH - END ###################
+############ AUTOBASH - USER SECTION ################
+
+################# AUTOBASH - END ####################
