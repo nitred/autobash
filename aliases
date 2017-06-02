@@ -1,5 +1,6 @@
 #!/bin/bash
-# general: bash
+
+# Autobash
 alias srcbash='source ~/.bashrc'
 alias atom-bash='atom ~/.bashrc ~/.bash_aliases'
 alias atom-bashaliases='atom ~/.bash_aliases'
@@ -18,6 +19,8 @@ alias doosh='du -sh'
 alias doosh-list='du -h --max-depth=1'
 alias doosh-list-sort='du -h --max-depth=1| sort -hrk1'
 
-PROJECT_HOME=$HOME/projects/
+PROJECTS_HOME="$( dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" )"
 
-# Additional aliases other than `projects`
+# Autobash User Section
+
+# Autobash - End

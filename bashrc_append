@@ -1,3 +1,12 @@
+##################### AUTOBASH ######################
+# The following lines have been added by Autobash.
+#####################################################
+
+# Source bash aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # For GIT Status
 if [ ! -f ~/.bash_git ]
 then
@@ -46,5 +55,6 @@ function prompt {
 
 prompt
 
-# For CUDA
-export LD_LIBRARY_PATH=/usr/local/lib
+############ AUTOBASH - USER SECTION ################
+
+################# AUTOBASH - END ####################
