@@ -30,6 +30,7 @@ autobash_extra_aliases="alias cp-autobash='source $PROJECTS_HOME/autobash/cp_aut
 ###################################################
 echo "----------------------"
 echo "TERMINATOR CONFIG: CREATE BACKUP"
+python terminator_config.py --create_backup
 
 
 ##################################################################
