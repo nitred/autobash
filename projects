@@ -13,16 +13,23 @@ echo "PROJECTS_HOME: $PROJECTS_HOME"
 # SYNTAX: "<project_name>     ;<alias_config>;<anaconda_config>"
 ##################################################################################
 PROJECTS=(
-"autobash              ;aliases;no_anaconda"
+"autobash              ;aliases;no_anaconda;no_terminator"
 )
 
 #========================
 # DOCUMENTATION???
-# project_extra_aliases
-# project_extra_condaenv
+# project_extra_aliases, single string multiple lines for more aliases
+# project_extra_condaenv, single string multiple lines for more aliases
 #========================
 # autobash
 autobash_extra_aliases="alias cp-autobash='source $PROJECTS_HOME/autobash/cp_autobash'"
+
+
+###################################################
+# TERMINATOR -1: Create backup of terminator config
+###################################################
+echo "----------------------"
+echo "TERMINATOR CONFIG: CREATE BACKUP"
 
 
 ##################################################################
@@ -35,6 +42,7 @@ do
         project=${arr[0]}
         aliases=${arr[1]}
         condaenv=${arr[2]}
+        terminator=${arr[3]}
 
 
     ##############################
@@ -200,10 +208,30 @@ do
 
 
     ###################################################
-    # # ANACONDA 3: IF "no_anaconda"
+    # ANACONDA 3: IF "no_anaconda"
     ###################################################
     else
+        # If no anaconda, then the default bashrc is anaconda3 for the sake of terminator
+        conda_bashrc_filename="$HOME/.conda_bashrc3"
         echo "PROJECT $project: Not creating project conda_bashrc file."
+    fi
+
+
+    ###################################################
+    # TERMINATOR 1: IF "terminator"
+    ###################################################
+    if [ "$terminator" == "terminator" ]
+    then
+        echo "PROJECT $project: Appending project and terminator config backup and aliases"
+        echo "alias terminator-$project='terminator -l autobash-$project'" >> ~/.bash_aliases
+        python terminator_config.py --append_backup $project $PROJECTS_HOME/$project $conda_bashrc_filename
+
+
+    ###################################################
+    # TERMINATOR 2: IF "no_terminator"
+    ###################################################
+    else
+        echo "PROJECT $project: Not appending project to terminator config backup."
     fi
 
 
@@ -211,3 +239,11 @@ do
 # AUTOMATING DONE
 #################
 done
+
+
+###################################################
+# TERMINATOR -2: Create backup of terminator config
+###################################################
+echo "----------------------"
+echo "TERMINATOR CONFIG: USE BACKUP"
+python terminator_config.py --use_backup
