@@ -30,7 +30,7 @@ autobash_extra_aliases="alias cp-autobash='source $PROJECTS_HOME/autobash/cp_aut
 ###################################################
 echo "----------------------"
 echo "TERMINATOR CONFIG: CREATE BACKUP"
-python terminator_config.py --create_backup
+python $PROJECTS_HOME/autobash/terminator_config.py --create_backup
 
 
 ##################################################################
@@ -225,7 +225,7 @@ do
     then
         echo "PROJECT $project: Appending project and terminator config backup and aliases"
         echo "alias terminator-$project='terminator -l autobash-$project'" >> ~/.bash_aliases
-        python terminator_config.py --append_backup $project $PROJECTS_HOME/$project $conda_bashrc_filename
+        python $PROJECTS_HOME/autobash/terminator_config.py --append_backup $project $PROJECTS_HOME/$project $conda_bashrc_filename
 
 
     ###################################################
@@ -247,4 +247,4 @@ done
 ###################################################
 echo "----------------------"
 echo "TERMINATOR CONFIG: USE BACKUP"
-python terminator_config.py --use_backup
+python $PROJECTS_HOME/autobash/terminator_config.py --use_backup
