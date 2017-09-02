@@ -58,9 +58,9 @@ do
         # APPENDING STANDARD ALIASES TO ~/.bash_aliases
         #----------------------------------------------
         echo "
-        # project: $project
-        alias cd-$project='cd $PROJECTS_HOME/$project'
-        alias atom-$project='atom -n $PROJECTS_HOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
+# project: $project
+alias cd-$project='cd $PROJECTS_HOME/$project'
+alias atom-$project='atom -n $PROJECTS_HOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
 
 
         #-------------------------------------------
@@ -103,27 +103,27 @@ do
         # APPENDING CONDA BASHRC2 FILE WITH ENVIRONMENT DETAILS
         #------------------------------------------------------
         echo "#!/bin/bash
-        echo \"CONDA-BASHRC 2 $project\"
+echo \"CONDA-BASHRC 2 $project\"
 
-        if [ -f ~/.bashrc ]
-        then
-            source ~/.bashrc
-        fi
+if [ -f ~/.bashrc ]
+then
+    source ~/.bashrc
+fi
 
-        function condapy() {
-             local RED=\"\[\033[0;31m\]\"
-             PATH=\$HOME/anaconda2/bin:\$PATH
-             export PS1=\"\$RED[CONDA2] \$PS1\"
-         }
+function condapy() {
+     local RED=\"\[\033[0;31m\]\"
+     PATH=\$HOME/anaconda2/bin:\$PATH
+     export PS1=\"\$RED[CONDA2] \$PS1\"
+ }
 
-        condapy
+condapy
 
-        alias ipy='jupyter qtconsole'
-        alias startnb='jupyter notebook'
-        alias nb2pdf='jupyter nbconvert --to latex --post PDF'
-        condaforge() { conda install -c conda-forge \"\$@\" ;}
+alias ipy='jupyter qtconsole'
+alias startnb='jupyter notebook'
+alias nb2pdf='jupyter nbconvert --to latex --post PDF'
+condaforge() { conda install -c conda-forge \"\$@\" ;}
 
-        source activate $project" > $conda_bashrc_filename
+source activate $project" > $conda_bashrc_filename
 
 
         #--------------------------------------------------
@@ -165,27 +165,27 @@ do
         # APPENDING CONDA BASHRC2 FILE WITH ENVIRONMENT DETAILS
         #------------------------------------------------------
         echo "#!/bin/bash
-        echo \"CONDA-BASHRC 3 $project\"
+echo \"CONDA-BASHRC 3 $project\"
 
-        if [ -f ~/.bashrc ]
-        then
-            source ~/.bashrc
-        fi
+if [ -f ~/.bashrc ]
+then
+    source ~/.bashrc
+fi
 
-        function condapy() {
-             local RED=\"\[\033[0;31m\]\"
-             PATH=\$HOME/anaconda3/bin:\$PATH
-             export PS1=\"\$RED[CONDA3] \$PS1\"
-         }
+function condapy() {
+     local RED=\"\[\033[0;31m\]\"
+     PATH=\$HOME/anaconda3/bin:\$PATH
+     export PS1=\"\$RED[CONDA3] \$PS1\"
+ }
 
-        condapy
+condapy
 
-        alias ipy='jupyter qtconsole'
-        alias startnb='jupyter notebook'
-        alias nb2pdf='jupyter nbconvert --to latex --post PDF'
-        condaforge() { conda install -c conda-forge \"\$@\" ;}
+alias ipy='jupyter qtconsole'
+alias startnb='jupyter notebook'
+alias nb2pdf='jupyter nbconvert --to latex --post PDF'
+condaforge() { conda install -c conda-forge \"\$@\" ;}
 
-        source activate $project" > $conda_bashrc_filename
+source activate $project" > $conda_bashrc_filename
 
 
         #--------------------------------------------------
