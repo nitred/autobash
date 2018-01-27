@@ -13,6 +13,8 @@ cp_autobash() {
     echo "copied conda_bashrc2"
     cp $PROJECTS_HOME/autobash/conda_bashrc3 ~/.conda_bashrc3
     echo "copied conda_bashrc3"
+    cp $PROJECTS_HOME/autobash/fzf_snippets ~/.fzf_snippets
+    echo "copied conda_bashrc3"
 }
 cp_autobash
 

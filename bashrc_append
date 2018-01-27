@@ -57,4 +57,9 @@ prompt
 
 ############ AUTOBASH - USER SECTION ################
 
+# For FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+HISTSIZE=5000
+HISTFILESIZE=20000
+
 ################# AUTOBASH - END ####################
