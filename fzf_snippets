@@ -4,3 +4,9 @@ unzip file.zip -d destination_folder
 conda env create --force -f dev_environment.yml
 conda create -n NAME python=3.6
 conda remove -n NAME --all
+docker ps
+docker ps -a
+docker ps -aq | xargs -i docker rm {}
+docker stop CONTAINER-ID
+docker images
+docker images -q | xargs -i docker rmi {}
