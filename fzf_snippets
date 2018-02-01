@@ -10,3 +10,4 @@ docker ps -aq | xargs -i docker rm {}
 docker stop CONTAINER-ID
 docker images
 docker images -q | xargs -i docker rmi {}
+git tag -a -m "release v0.0.1" 0.0.1
