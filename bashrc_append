@@ -59,7 +59,16 @@ prompt
 
 # For FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-HISTSIZE=5000
-HISTFILESIZE=20000
+HISTSIZE=20000
+HISTFILESIZE=40000
+
+
+gittagdelete() {
+  if [ ! -z $1 ] ; then
+    git tag --delete $1 &&  git push --delete origin $1
+  else
+    echo "Usage: gittagdelete 0.5.3"
+  fi
+}
 
 ################# AUTOBASH - END ####################
