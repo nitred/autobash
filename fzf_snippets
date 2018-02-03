@@ -11,3 +11,5 @@ docker stop CONTAINER-ID
 docker images
 docker images -q | xargs -i docker rmi {}
 git tag -a -m "release v0.0.1" 0.0.1
+gpg --cipher-algo AES256 --symmetric filename.zip
+gpg --output filename.zip --decrypt filename.zip.gpg
