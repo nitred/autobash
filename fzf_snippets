@@ -1,5 +1,7 @@
-tar xvzf filename.tar.gz filename
-tar xvjf filename.tar.bz filename
+tar -xvzf filename.tar.gz filename # gzip extract
+tar -cvzf filename.tar.gz filename # gzip compress
+tar -xvjf filename.tar.bz filename # bzip extract
+tar -cvjf filename.tar.gz filename # bzip compress
 unzip file.zip -d destination_folder
 conda env create --force -f dev_environment.yml
 conda create -n NAME python=3.6
