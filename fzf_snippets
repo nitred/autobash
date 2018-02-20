@@ -13,5 +13,7 @@ docker stop CONTAINER-ID
 docker images
 docker images -q | xargs -i docker rmi {}
 git tag -a -m "release v0.0.1" 0.0.1
+git reset HEAD~ # undo last commit keeping the changes in buffer
 gpg --cipher-algo AES256 --symmetric filename.zip
 gpg --output filename.zip --decrypt filename.zip.gpg
+wget https://gist.githubusercontent.com/nitred/f60ecb1d27c2786c8adf04f5d3d8ab29/raw/b87a6b22fbec7e1eb9d08a15665de352b2e30b78/template_notebook.ipynb # wget notebook template
