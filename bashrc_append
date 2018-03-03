@@ -59,7 +59,7 @@ prompt
 
 # Install FZF
 if [ ! -d ~/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    git clone --depth 1 https://github.com/nitred/fzf.git ~/.fzf
     ~/.fzf/install --key-bindings --completion --no-update-rc
 fi
 
