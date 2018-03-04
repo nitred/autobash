@@ -29,6 +29,7 @@ docker images -q | xargs -i docker rmi {}
 # GIT
 ################################################################################
 git tag -a -m "release v0.0.1" 0.0.1
+gittagdelete  # delete tag
 
 ################################################################################
 # ENCRYPTION & DECRYPTION
