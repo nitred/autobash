@@ -48,6 +48,7 @@ py.test --verbose -vv --cov-report term-missing --cov <PACKAGE_DIR> --cov-report
 ################################################################################
 ssh -ND 8080 username@remotehost  # SOCK5 proxy
 chromium-browser --proxy-server="socks5://localhost:8080"  # SOCK5 proxy browser session
+chromium-browser --proxy-server="socks5://localhost:8080" --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost"  # SOCK5 proxy with DNS redirect
 
 ################################################################################
 # Ubuntu User Management
@@ -56,6 +57,5 @@ cut -d: -f1 /etc/passwd  # list all users
 useradd new_username  # add new user, with sudo maybe
 userdel new_username  # remove user, with sudo maybe
 rm -r /home/username  # remove user home folder, with sudo maybe
-
 su - another-user  # switch user
 su -  # switch user root
