@@ -57,6 +57,12 @@ prompt
 
 ############ AUTOBASH - USER SECTION ################
 
+# Install FZF
+if [ ! -d ~/.fzf ]; then
+    git clone --depth 1 https://github.com/nitred/fzf.git ~/.fzf
+    ~/.fzf/install --key-bindings --completion --no-update-rc
+fi
+
 # For FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 HISTSIZE=20000
