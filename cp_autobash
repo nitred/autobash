@@ -13,8 +13,9 @@ cp_autobash() {
     echo "copied conda_bashrc2"
     cp $PROJECTS_HOME/autobash/conda_bashrc3 ~/.conda_bashrc3
     echo "copied conda_bashrc3"
-    cp $PROJECTS_HOME/autobash/fzf_snippets ~/.fzf_snippets
-    echo "copied conda_bashrc3"
+    wget -O ~/.fzf_snippets https://gist.githubusercontent.com/nitred/84e11ef8b96454d39e9639ab82d9058a/raw/4e2528d46777efab353e9a0178560ccaef60829c/.fzf_snippets
+    # cp $PROJECTS_HOME/autobash/fzf_snippets ~/.fzf_snippets
+    echo "downloaded fzf_snippets"
 }
 cp_autobash
 
