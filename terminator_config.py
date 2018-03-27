@@ -65,6 +65,7 @@ def append_autobash_sections_to_backup(project, project_dir, conda_bashrc_filena
                                                                   conda_bashrc_filename),
         'use_custom_command': True,
         'login_shell': True,
+        'scrollback_lines': 10000
     }
 
     uuid1, uuid2, uuid3, uuid4 = str(uuid.uuid4()), str(uuid.uuid4()), str(uuid.uuid4()), str(uuid.uuid4())
@@ -98,32 +99,28 @@ def append_autobash_sections_to_backup(project, project_dir, conda_bashrc_filena
                                      'parent': 'child3',
                                      'profile': AUTOBASH_PROJECT,
                                      'type': 'Terminal',
-                                     'uuid': uuid1,
-                                     'scrollback_lines': 10000},
+                                     'uuid': uuid1},
                        'terminal5': {'command': '',
                                      'directory': '',
                                      'order': '1',
                                      'parent': 'child3',
                                      'profile': AUTOBASH_PROJECT,
                                      'type': 'Terminal',
-                                     'uuid': uuid2,
-                                     'scrollback_lines': 10000},
+                                     'uuid': uuid2},
                        'terminal6': {'command': '',
                                      'directory': '',
                                      'order': '1',
                                      'parent': 'child2',
                                      'profile': AUTOBASH_PROJECT,
                                      'type': 'Terminal',
-                                     'uuid': uuid3,
-                                     'scrollback_lines': 10000},
+                                     'uuid': uuid3},
                        'terminal7': {'command': '',
                                      'directory': '',
                                      'order': '1',
                                      'parent': 'child1',
                                      'profile': 'default',
                                      'type': 'Terminal',
-                                     'uuid': uuid4,
-                                     'scrollback_lines': 10000}}
+                                     'uuid': uuid4}}
 
     config = ConfigObj(TERMINATOR_CONFIG_BACKUP_FILE)
     # append autobash profiles
@@ -161,6 +158,7 @@ def run(create_backup, project_details, use_backup):
 [profiles]
   [[default]]
     background_image = None
+    scrollback_lines = 10000
 """
         os.makedirs(TERMINATOR_CONFIG_DIR)
         with open(TERMINATOR_CONFIG_FILE, 'w') as f:
