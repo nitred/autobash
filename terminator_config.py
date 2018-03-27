@@ -146,20 +146,37 @@ def copy_backup_config_to_current():
 def run(create_backup, project_details, use_backup):
     """Run script with arguments."""
     if not is_config_exists():
-        print("TERMINATOR CONFIG: CONFIG DOES NOT EXIST")
-        return
+        print("TERMINATOR CONFIG: CONFIG DOES NOT EXIST... Creating a default config")
+        default_config = """[global_config]
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
+"""
+        os.makedirs(TERMINATOR_CONFIG_DIR)
+        with open(TERMINATOR_CONFIG_FILE, 'w') as f:
+            f.write(default_config)
+        print("TERMINATOR CONFIG: CREATED DEFAULT CONFIG")
 
-    else:
-        if create_backup:
-            copy_current_config_to_backup()
-            remove_all_autobash_sections_from_backup()
+    if create_backup:
+        copy_current_config_to_backup()
+        remove_all_autobash_sections_from_backup()
 
-        if project_details:
-            project_name, project_dir, project_conda_bashrc = project_details
-            append_autobash_sections_to_backup(project_name, project_dir, project_conda_bashrc)
+    if project_details:
+        project_name, project_dir, project_conda_bashrc = project_details
+        append_autobash_sections_to_backup(project_name, project_dir, project_conda_bashrc)
 
-        if use_backup:
-            copy_backup_config_to_current()
+    if use_backup:
+        copy_backup_config_to_current()
 
 
 def main():

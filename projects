@@ -44,7 +44,7 @@ do
         aliases=${arr[1]}
         condaenv=${arr[2]}
         terminator=${arr[3]}
-        pgroup=${arr[3]}
+        pgroup=${arr[4]}
 
 
     ############################################################################
@@ -55,16 +55,16 @@ do
     ###################################################
     if [ "$pgroup" == "no_pgroup" ]
     then
-        echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECT_HOME"
-        PHOME=$PROJECT_HOME
+        echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECTS_HOME"
+        PHOME=$PROJECTS_HOME
 
 
     ###################################################
     # PHOME 2: IF "no_phome"
     ###################################################
     else
-      echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECT_HOME/$pgroup"
-      PHOME="$PROJECT_HOME/$pgroup"
+      echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECTS_HOME/$pgroup"
+      PHOME="$PROJECTS_HOME/$pgroup"
     fi
 
 
@@ -85,7 +85,7 @@ do
         echo "
 # project: $project
 alias cd-$project='cd $PHOME/$project'
-alias atom-$project='atom -n $PHOME/$project $PHOME/pytk'" >> ~/.bash_aliases
+alias atom-$project='atom -n $PHOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
 
 
         #-------------------------------------------
