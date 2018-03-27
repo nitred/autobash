@@ -10,10 +10,10 @@ echo "PROJECTS_HOME: $PROJECTS_HOME"
 ########### USER CONFIG ############
 ##################################################################################
 # User must manually enter project names and `alias` and `anaconda` configuration.
-# SYNTAX: "<project_name>     ;<alias_config>;<anaconda_config>"
+# SYNTAX: "<project_name>     ;<alias_config>;<anaconda_config>;<terminator_config>;<pgroup_config>"
 ##################################################################################
 PROJECTS=(
-"autobash              ;aliases;no_anaconda;no_terminator"
+"autobash              ;aliases;no_anaconda;no_terminator;no_pgroup"
 )
 
 #========================
@@ -44,8 +44,33 @@ do
         aliases=${arr[1]}
         condaenv=${arr[2]}
         terminator=${arr[3]}
+        pgroup=${arr[3]}
 
 
+    ############################################################################
+    # PROJECT GROUP (PGROUP)
+    ############################################################################
+    ###################################################
+    # pgroup 1: IF "no_pgroup"
+    ###################################################
+    if [ "$pgroup" == "no_pgroup" ]
+    then
+        echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECT_HOME"
+        PHOME=$PROJECT_HOME
+
+
+    ###################################################
+    # PHOME 2: IF "no_phome"
+    ###################################################
+    else
+      echo "PROJECT HOME + PROJECT GROUP (PHOME): $PROJECT_HOME/$pgroup"
+      PHOME="$PROJECT_HOME/$pgroup"
+    fi
+
+
+    ############################################################################
+    # ALIASES
+    ############################################################################
     ##############################
     # ALIASES 1: IF "aliases"
     ##############################
@@ -59,8 +84,8 @@ do
         #----------------------------------------------
         echo "
 # project: $project
-alias cd-$project='cd $PROJECTS_HOME/$project'
-alias atom-$project='atom -n $PROJECTS_HOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
+alias cd-$project='cd $PHOME/$project'
+alias atom-$project='atom -n $PHOME/$project $PHOME/pytk'" >> ~/.bash_aliases
 
 
         #-------------------------------------------
@@ -84,6 +109,9 @@ alias atom-$project='atom -n $PROJECTS_HOME/$project $PROJECTS_HOME/pytk'" >> ~/
     fi
 
 
+    ############################################################################
+    # ANACONDA
+    ############################################################################
     ###########################################
     # ANACONDA 1: IF "anaconda2"
     ###########################################
@@ -217,7 +245,9 @@ source activate $project" > $conda_bashrc_filename
         echo "PROJECT $project: Not creating project conda_bashrc file."
     fi
 
-
+    ############################################################################
+    # TERMINATOR
+    ############################################################################
     ###################################################
     # TERMINATOR 1: IF "terminator"
     ###################################################
@@ -225,7 +255,7 @@ source activate $project" > $conda_bashrc_filename
     then
         echo "PROJECT $project: Appending project and terminator config backup and aliases"
         echo "alias terminator-$project='terminator -l autobash-$project'" >> ~/.bash_aliases
-        python $PROJECTS_HOME/autobash/terminator_config.py --append_backup $project $PROJECTS_HOME/$project $conda_bashrc_filename
+        python $PROJECTS_HOME/autobash/terminator_config.py --append_backup $project $PHOME/$project $conda_bashrc_filename
 
 
     ###################################################
