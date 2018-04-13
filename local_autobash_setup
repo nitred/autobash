@@ -39,11 +39,3 @@ mkdir -p $LOCAL_AUTOBASH_BIN
 echo "##########################################################################"
 echo "Installing required python packages"
 $PIP_PATH install configobj requests
-
-
-################################################################################
-# Install support apps
-################################################################################
-echo "##########################################################################"
-echo "Installing protemplates into bin directory"
-$PYTHON_PATH $AUTOBASH_DIR/tools/protemplates.py --local_directory "$LOCAL_AUTOBASH_SRC"
