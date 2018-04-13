@@ -1,15 +1,15 @@
-"""Download, extract and copy protemplates to autobash bin dir."""
+"""Download, extract and copy rmate to autobash bin dir."""
 import argparse
 import os
 
 import requests
 
 GITHUB_API_URL = "https://api.github.com/repos"
-OWNER = "ansrivas"
-REPO = "protemplates"
-BINARY = "protemplates"
-ASSET_REGEX = "linux-amd64.tgz"
-EXTRACTED_BINARY_ALIAS = "protemplates-linux-amd64"
+OWNER = "aurora"
+REPO = "rmate"
+BINARY = "rmate"
+ASSET_REGEX = "tar.gz"
+EXTRACTED_BINARY_ALIAS = "rmate"
 
 
 def join_url_words(*words):
@@ -33,16 +33,15 @@ def main(local_directory):
     r = requests.get(latest_release_url)
     try:
         json_response = r.json()
-        assets = json_response['assets']
-        assets_urls = [asset['browser_download_url'] for asset in assets]
+        tarball_url = json_response['tarball_url']
     except Exception:
         print("Error: Received response from request: {}".format(r.text))
         raise
 
     ############################################################################
-    # Download "linux-amd64.tgz" asset
+    # Download "tar.gz" asset
     ############################################################################
-    download_url = [asset_url for asset_url in assets_urls if ASSET_REGEX in asset_url][0]
+    download_url = tarball_url
     print("{}: download_url: {}".format(REPO, download_url))
 
     download_filename = download_url.split('/')[-1]

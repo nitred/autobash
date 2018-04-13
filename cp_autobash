@@ -38,6 +38,7 @@ source $PROJECTS_HOME/autobash/projects $PROJECTS_HOME
 echo "" >> ~/.bash_aliases
 echo "# autobash-tools" >> ~/.bash_aliases
 echo "alias autobash-get-protemplates='$PYTHON_PATH $PROJECTS_HOME/autobash/tools/protemplates.py --local_directory "$LOCAL_AUTOBASH_DIR"'" >> ~/.bash_aliases
+echo "alias autobash-get-rmate='$PYTHON_PATH $PROJECTS_HOME/autobash/tools/rmate.py --local_directory "$LOCAL_AUTOBASH_DIR"'" >> ~/.bash_aliases
 
 
 # SOURCE BASHRC
