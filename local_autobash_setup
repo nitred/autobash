@@ -1,0 +1,49 @@
+#!/bin/bash
+LOCAL_AUTOBASH_DIR=$1
+PIP_PATH=$2
+echo "##########################################################################"
+echo "LOCAL AUTOBASH SETUP: LOCAL_AUTOBASH_DIR: $LOCAL_AUTOBASH_DIR"
+echo "LOCAL AUTOBASH SETUP: PIP_PATH: $PIP_PATH"
+
+
+################################################################################
+# Local autobash directories
+################################################################################
+LOCAL_AUTOBASH_DIR=~/.autobash
+LOCAL_AUTOBASH_SRC=$LOCAL_AUTOBASH_DIR/src
+LOCAL_AUTOBASH_BIN=$LOCAL_AUTOBASH_DIR/bin
+
+
+################################################################################
+# Create local directories
+################################################################################
+echo "##########################################################################"
+echo "LOCAL_AUTOBASH_DIR: $LOCAL_AUTOBASH_DIR"
+echo "CREATING LOCAL_AUTOBASH_DIR directory: $LOCAL_AUTOBASH_DIR"
+mkdir -p $LOCAL_AUTOBASH_DIR
+
+echo "##########################################################################"
+echo "LOCAL_AUTOBASH_SRC: $LOCAL_AUTOBASH_SRC"
+echo "CREATING LOCAL_AUTOBASH_SRC directory: $LOCAL_AUTOBASH_SRC"
+mkdir -p $LOCAL_AUTOBASH_SRC
+
+echo "##########################################################################"
+echo "LOCAL_AUTOBASH_BIN: $LOCAL_AUTOBASH_BIN"
+echo "CREATING LOCAL_AUTOBASH_BIN directory: $LOCAL_AUTOBASH_BIN"
+mkdir -p $LOCAL_AUTOBASH_BIN
+
+
+################################################################################
+# Install pip packages
+################################################################################
+echo "##########################################################################"
+echo "Installing required python packages"
+$PIP_PATH install configobj requests
+
+
+################################################################################
+# Install support apps
+################################################################################
+echo "##########################################################################"
+echo "Installing protemplates into bin directory"
+$PYTHON_PATH $AUTOBASH_DIR/tools/protemplates.py --local_directory "$LOCAL_AUTOBASH_SRC"
