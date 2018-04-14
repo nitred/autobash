@@ -35,9 +35,16 @@
     'prefix': 'docs'
     'body': '"""$1."""'
 
-  'log.create':
-    'prefix': 'logger'
+  'logger.standard':
+    'prefix': 'logger.standard'
     'body': 'import logging\nlogger = logging.getLogger(__name__)$1'
+
+  'logger.gunicorn':
+    'prefix': 'logger.gunicorn'
+    'body': """import logging
+    logger = logging.getLogger('gunicorn.error')
+    if not logger.handlers:
+        logger = logging.getLogger(__name__)$1"""
 
   'log.debug':
     'prefix': 'logd'
