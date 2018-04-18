@@ -2,7 +2,9 @@
 **Do not use this repository if you have critical bashrc and bash aliases commands.** This project is specifically intended as a convenience tool for casual bash users. Please proceed with caution.
 
 # About
-This is project is aimed at Ubuntu 16.04 users who often use bash, terminator, Atom and Anaconda. Its intention is to quickly deploy the same bash experience on any system. If you use this tool you will no longer edit or update the `~/.bashrc` or `~/.bash_aliases` directly. Instead you will make changes to `~/projects/autobash/bashrc_append` and `~/projects/autobash/aliases`. The changes you make here can be committed to git and when you move to a new system, you can git clone & pull and all your personal settings will be imported.
+This is project is aimed at Ubuntu 16.04 users who often use bash, terminator, Atom and Anaconda.
+
+Its intention is to quickly deploy the same bash experience on any system. If you use this tool you will no longer edit or update the `~/.bashrc` or `~/.bash_aliases` directly. Instead you will make changes to `~/projects/autobash/bashrc_append` and `~/projects/autobash/aliases`. The changes you make here can be committed to git and when you move to a new system, you can git clone & pull and all your personal settings will be imported.
 
 Current Version: 0.2.0 (no version control yet)
 
