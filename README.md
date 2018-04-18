@@ -2,10 +2,33 @@
 **Do not use this repository if you have critical bashrc and bash aliases commands.** This project is specifically intended as a convenience tool for casual bash users. Please proceed with caution.
 
 # About
+This is project is aimed at Ubuntu 16.04 users who often use bash, terminator, Atom and Anaconda. Its intention is to quickly deploy the same bash experience on any system. If you use this tool you will no longer edit or update the `~/.bashrc` or `~/.bash_aliases` directly. Instead you will make changes to `~/projects/autobash/bashrc_append` and `~/projects/autobash/aliases`. The changes you make here can be committed to git and when you move to a new system, you can git clone & pull and all your personal settings will be imported.
+
+Current Version: 0.2.0 (no version control yet)
+
+
 Autobash does the following:
-1. Makes the bash prompt look a little more practical.
-1. Auto creates aliases for projects.
+1. Auto appends the ~/.bashrc to make the bash prompt look a little more practical with support for GIT and Anaconda
+1. Auto creates aliases for easy project access with terminator and Atom.
 1. Auto creates aliases and bashrc files for use with Anaconda environments.
+1. Auto creates aliases for quick download of tools and added them to local path.
+  - [protemplates - python & go project creator](https://github.com/ansrivas/protemplates)
+  - [rmate](https://github.com/textmate/rmate)
+1. Auto creates [terminator](https://launchpad.net/~gnome-terminator/+archive/ubuntu/nightly-gtk3) profiles for each project.
+1. Auto creates [fzf](https://github.com/junegunn/fzf) support with which you can even quick look up [fzf_snippets](https://gist.github.com/nitred/84e11ef8b96454d39e9639ab82d9058a#file-fzf_snippets) with Alt+E shortcut.
+
+# Dependencies
+* Install [terminator gtk3](https://launchpad.net/~gnome-terminator/+archive/ubuntu/nightly-gtk3)
+
+```
+sudo add-apt-repository ppa:gnome-terminator/nightly-gtk3
+sudo apt-get update
+sudo apt-get install terminator
+```
+
+* Install [Atom](https://atom.io/) by downloading it from their website
+
+* Install [Anaconda](https://www.anaconda.com/download/) by downloading it from their website and make sure to install it in the following path `~/anaconda3/` and don't append the `~/anaconda3/bin` path to the `~/.bashrc`.
 
 # How To - First Time
 
