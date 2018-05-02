@@ -12,6 +12,7 @@ echo "LOCAL AUTOBASH SETUP: PIP_PATH: $PIP_PATH"
 LOCAL_AUTOBASH_DIR=~/.autobash
 LOCAL_AUTOBASH_SRC=$LOCAL_AUTOBASH_DIR/src
 LOCAL_AUTOBASH_BIN=$LOCAL_AUTOBASH_DIR/bin
+LOCAL_AUTOBASH_LIB=$LOCAL_AUTOBASH_DIR/lib
 
 
 ################################################################################
@@ -31,6 +32,11 @@ echo "##########################################################################
 echo "LOCAL_AUTOBASH_BIN: $LOCAL_AUTOBASH_BIN"
 echo "CREATING LOCAL_AUTOBASH_BIN directory: $LOCAL_AUTOBASH_BIN"
 mkdir -p $LOCAL_AUTOBASH_BIN
+
+echo "##########################################################################"
+echo "LOCAL_AUTOBASH_BIN: $LOCAL_AUTOBASH_LIB"
+echo "CREATING LOCAL_AUTOBASH_LIB directory: $LOCAL_AUTOBASH_LIB"
+mkdir -p $LOCAL_AUTOBASH_LIB
 
 
 ################################################################################
