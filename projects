@@ -46,7 +46,6 @@ do
         terminator=${arr[3]}
         pgroup=${arr[4]}
 
-
     ############################################################################
     # PROJECT GROUP (PGROUP)
     ############################################################################
@@ -91,13 +90,15 @@ alias atom-$project='atom -n $PHOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_al
         #-------------------------------------------
         # APPENDING EXTRA ALIASES TO ~/.bash_aliases
         #-------------------------------------------
-        extra_aliases_variable="${project}_extra_aliases"
-        if [ -z "$extra_aliases_variable" ]
+        project_safe=$(echo ${project//-/_})
+        extra_aliases_var_name="${project_safe}_extra_aliases"
+        extra_aliases_var_value=$(eval "echo \$${extra_aliases_var_name}")
+        if [ -z "${extra_aliases_var_value}" ]
         then
-          echo "PROJECT $project: Creating extra aliases"
-          echo "${extra_aliases_variable}" >> ~/.bash_aliases
-        else
           echo "PROJECT $project: Not creating extra aliases"
+        else
+          echo "PROJECT $project: Creating extra aliases"
+          echo "${extra_aliases_var_value}" >> ~/.bash_aliases
         fi
 
 
@@ -157,13 +158,14 @@ source activate $project" > $conda_bashrc_filename
         #--------------------------------------------------
         # APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
         #--------------------------------------------------
-        extra_condaenv_variable="${project}_extra_condaenv"
-        if [ -z "$extra_condaenv_variable" ]
+        extra_condaenv_var_name="${project_safe}_extra_condaenv"
+        extra_condaenv_var_value=$(eval "echo \$${extra_condaenv_var_name}")
+        if [ -z "${extra_condaenv_var_value}" ]
         then
-          echo "PROJECT $project: Creating extra condev"
-          echo "${extra_condaenv_variable}" >> $conda_bashrc_filename
-        else
           echo "PROJECT $project: Not creating extra condev"
+        else
+          echo "PROJECT $project: Creating extra condev"
+          echo "${extra_condaenv_var_value}" >> $conda_bashrc_filename
         fi
 
 
@@ -219,13 +221,14 @@ source activate $project" > $conda_bashrc_filename
         #--------------------------------------------------
         # APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
         #--------------------------------------------------
-        extra_condaenv_variable="${project}_extra_condaenv"
-        if [ -z "$extra_condaenv_variable" ]
+        extra_condaenv_var_name="${project_safe}_extra_condaenv"
+        extra_condaenv_var_value=$(eval "echo \$${extra_condaenv_var_name}")
+        if [ -z "${extra_condaenv_var_value}" ]
         then
-          echo "PROJECT $project: Creating extra condev"
-          echo "${extra_condaenv_variable}" >> $conda_bashrc_filename
-        else
           echo "PROJECT $project: Not creating extra condev"
+        else
+          echo "PROJECT $project: Creating extra condev"
+          echo "${extra_condaenv_var_value}" >> $conda_bashrc_filename
         fi
 
 
