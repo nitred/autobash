@@ -92,10 +92,10 @@ alias atom-$project='atom -n $PHOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_al
         # APPENDING EXTRA ALIASES TO ~/.bash_aliases
         #-------------------------------------------
         extra_aliases_variable="${project}_extra_aliases"
-        if [ -n "${!extra_aliases_variable}" ]
+        if [ -z "$extra_aliases_variable" ]
         then
           echo "PROJECT $project: Creating extra aliases"
-          echo "${!extra_aliases_variable}" >> ~/.bash_aliases
+          echo "${extra_aliases_variable}" >> ~/.bash_aliases
         else
           echo "PROJECT $project: Not creating extra aliases"
         fi
@@ -158,10 +158,10 @@ source activate $project" > $conda_bashrc_filename
         # APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
         #--------------------------------------------------
         extra_condaenv_variable="${project}_extra_condaenv"
-        if [ -n "${!extra_condaenv_variable}" ]
+        if [ -z "$extra_condaenv_variable" ]
         then
           echo "PROJECT $project: Creating extra condev"
-          echo "${!extra_condaenv_variable}" >> $conda_bashrc_filename
+          echo "${extra_condaenv_variable}" >> $conda_bashrc_filename
         else
           echo "PROJECT $project: Not creating extra condev"
         fi
@@ -220,10 +220,10 @@ source activate $project" > $conda_bashrc_filename
         # APPENDING EXTRA CONDAENV TO PROJECT CONDA BASHRC2
         #--------------------------------------------------
         extra_condaenv_variable="${project}_extra_condaenv"
-        if [ -n "${!extra_condaenv_variable}" ]
+        if [ -z "$extra_condaenv_variable" ]
         then
           echo "PROJECT $project: Creating extra condev"
-          echo "${!extra_condaenv_variable}" >> $conda_bashrc_filename
+          echo "${extra_condaenv_variable}" >> $conda_bashrc_filename
         else
           echo "PROJECT $project: Not creating extra condev"
         fi
