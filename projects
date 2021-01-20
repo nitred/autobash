@@ -13,7 +13,7 @@ echo "PROJECTS_HOME: $PROJECTS_HOME"
 # SYNTAX: "<project_name>     ;<alias_config>;<anaconda_config>;<terminator_config>;<pgroup_config>"
 ##################################################################################
 PROJECTS=(
-"autobash              ;aliases;no_anaconda;no_terminator;no_pgroup"
+"autobash               ;aliases;no_anaconda;no_terminator;no_pgroup"
 )
 
 #========================
@@ -81,10 +81,14 @@ do
         #----------------------------------------------
         # APPENDING STANDARD ALIASES TO ~/.bash_aliases
         #----------------------------------------------
+        # 1. alias for cd to project dir
+        # 2. alias for atom for project dir
+        # 3. alias for pycharm-community for a project dir AND redirect all output and error to dev/null AND run in background
         echo "
 # project: $project
 alias cd-$project='cd $PHOME/$project'
-alias atom-$project='atom -n $PHOME/$project $PROJECTS_HOME/pytk'" >> ~/.bash_aliases
+alias atom-$project='atom -n $PHOME/$project'
+alias charm-$project='pycharm-community $PHOME/$project > /dev/null 2>&1 &'" >> ~/.bash_aliases
 
 
         #-------------------------------------------
