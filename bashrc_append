@@ -73,7 +73,7 @@ fi
 
 # For FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-HISTSIZE=20000
+HISTSIZE=30000
 HISTFILESIZE=40000
 
 
@@ -102,24 +102,24 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# ------------------------------------------------------------------------------
-# GO
-# ------------------------------------------------------------------------------
-# Go source/binary has been downloaded + extracted + copied to /usr/local/go
-# Go binary files are added to the path
-export PATH=$PATH:/usr/local/go/bin
+# # ------------------------------------------------------------------------------
+# # GO
+# # ------------------------------------------------------------------------------
+# # Go source/binary has been downloaded + extracted + copied to /usr/local/go
+# # Go binary files are added to the path
+# export PATH=$PATH:/usr/local/go/bin
 
-# Trying to emulate conda environment structure with go
-# Folder called base will be where all the go get commands will download the libs
-# Additional custom environments/folders/workspaces will be added to the
-# GOPATH via other aliases such as gows-common, which will add 'common' to the GOPATH
-export GOPATH=/home/nitred/projects/group-go/go-base
-export PATH=$PATH:$GOPATH/bin
+# # Trying to emulate conda environment structure with go
+# # Folder called base will be where all the go get commands will download the libs
+# # Additional custom environments/folders/workspaces will be added to the
+# # GOPATH via other aliases such as gows-common, which will add 'common' to the GOPATH
+# export GOPATH=/home/nitred/projects/group-go/go-base
+# export PATH=$PATH:$GOPATH/bin
 
 
-# --------------------------------------------
-# Rust
-# --------------------------------------------
-source "$HOME/.cargo/env"
+# # --------------------------------------------
+# # Rust
+# # --------------------------------------------
+# source "$HOME/.cargo/env"
 
 ############################### AUTOBASH - END #################################
