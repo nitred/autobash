@@ -22,5 +22,6 @@ alias doosh-list-sort='du -h --max-depth=1| sort -hrk1'
 PROJECTS_HOME="$( dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" )"
 
 # Autobash User Section
+alias gows-go-test='export GOPATH=$GOPATH:/root/projects/group-go/go-test'
 
 # Autobash - End
